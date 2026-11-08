@@ -77,3 +77,22 @@ def test_deve_retornar_pessoa_sem_escolaridade_coordenador_curso():
     curso = Curso()
     curso.set_coordenador(coordenador)
     assert curso.get_nome_escolaridade_coordenador() == "Pessoa sem escolaridade"
+
+def test_deve_retornar_nome_escolaridade_diretor_escola():
+    escolaridade = Escolaridade()
+    escolaridade.set_nome("Doutorado")
+    diretor = Professor()
+    diretor.set_escolaridade(escolaridade)
+    escola = Escola()
+    escola.set_diretor(diretor)
+    assert escola.get_nome_escolaridade_diretor() == "Doutorado"
+
+def test_deve_retornar_escola_sem_diretor():
+    escola = Escola()
+    assert escola.get_nome_escolaridade_diretor() == "Escola sem diretor"
+
+def test_deve_retornar_pessoa_sem_escolaridade_diretor_escola():
+    diretor = Professor()  # escolaridade começa None (não defini nenhuma)
+    escola = Escola()
+    escola.set_diretor(diretor)
+    assert escola.get_nome_escolaridade_diretor() == "Pessoa sem escolaridade"

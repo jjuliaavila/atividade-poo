@@ -90,3 +90,16 @@ class Curso:
             return "Curso sem coordenador"
         else:
             return self.__coordenador.get_nome_escolaridade()
+
+class Escola:
+    def __init__(self):
+        self.__diretor = None  # comeca sem diretor (relacao opcional)
+    def set_diretor(self, diretor):
+        self.__diretor = diretor
+    def get_diretor(self):
+        return self.__diretor
+    def get_nome_escolaridade_diretor(self):
+        if self.__diretor is None:
+            return "Escola sem diretor"  # se nao tem diretor avisa sem vez de dar erro
+        else:
+            return self.__diretor.get_nome_escolaridade()
