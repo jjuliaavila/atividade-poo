@@ -1,0 +1,87 @@
+class Estado:
+    def __init__(self):
+        self.__nome = ""
+    def set_nome(self, nome):
+        self.__nome = nome
+    def get_nome(self):
+        return self.__nome
+
+class Cidade:
+    def __init__(self):
+        self.__estado = None
+    def set_estado(self, estado):
+        self.__estado = estado
+    def get_estado(self):
+        return self.__estado
+    def get_nome_estado(self):
+        if self.__estado is None:
+            return "Cidade sem estado"
+        else:
+            return self.__estado.get_nome()
+
+class Escolaridade:
+    def __init__(self):
+        self.__nome = ""
+    def get_nome(self):
+        return self.__nome
+    def set_nome(self, nome):
+        self.__nome = nome
+
+class Pessoa:
+    def __init__(self):
+        self.__nome = ""
+        self.__escolaridade = None
+        self.__naturalidade = None
+    def get_nome(self):
+        return self.__nome
+    def set_nome(self, nome):
+        self.__nome = nome
+    def get_escolaridade(self):
+        return self.__escolaridade
+    def set_escolaridade(self, escolaridade):
+        self.__escolaridade = escolaridade
+    def get_naturalidade(self):
+        return self.__naturalidade
+    def set_naturalidade(self, naturalidade):
+        self.__naturalidade = naturalidade
+    def get_nome_escolaridade(self):
+        if self.__escolaridade is None:
+            return "Pessoa sem escolaridade"
+        else:
+            return self.__escolaridade.get_nome()
+    def get_nome_estado_naturalidade(self):
+        if self.__naturalidade is None:
+            return "Pessoa sem estado naturalidade"
+        else:
+            return self.__naturalidade.get_nome_estado()
+
+class Professor(Pessoa):
+    def __init__(self):
+        Pessoa.__init__(self)
+        self.__curso = None
+    def set_curso(self, curso):
+        self.__curso = curso
+    def get_curso(self):
+        return self.__curso
+    def get_nome_coordenador(self):
+        if self.__curso is None:
+            return "Professor sem curso"
+        else:
+            return self.__curso.get_nome_coordenador()
+
+class Aluno(Pessoa):
+    def __init__(self):
+        Pessoa.__init__(self)
+
+class Curso:
+    def __init__(self):
+        self.__coordenador = None
+    def set_coordenador(self, coordenador):
+        self.__coordenador = coordenador
+    def get_coordenador(self):
+        return self.__coordenador
+    def get_nome_coordenador(self):
+        if self.__coordenador is None:
+            return "Curso sem coordenador"
+        else:
+            return self.__coordenador.get_nome()
