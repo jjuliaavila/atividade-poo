@@ -85,3 +85,8 @@ class Curso:
             return "Curso sem coordenador"
         else:
             return self.__coordenador.get_nome()
+    def get_nome_escolaridade_coordenador(self):
+        if self.__coordenador is None:
+            return "Curso sem coordenador"
+        else:
+            return self.__coordenador.get_nome_escolaridade()

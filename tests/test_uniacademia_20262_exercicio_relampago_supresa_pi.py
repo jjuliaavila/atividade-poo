@@ -58,3 +58,22 @@ def test_deve_retornar_nome_coordenador_professor():
     professor = Professor()
     professor.set_curso(curso)
     assert professor.get_nome_coordenador() == "Marco"
+
+def test_deve_retornar_nome_escolaridade_coordenador_curso():
+    escolaridade = Escolaridade()
+    escolaridade.set_nome("Mestrado")
+    coordenador = Professor()
+    coordenador.set_escolaridade(escolaridade)
+    curso = Curso()
+    curso.set_coordenador(coordenador)
+    assert curso.get_nome_escolaridade_coordenador() == "Mestrado"
+
+def test_deve_retornar_curso_sem_coordenador_ao_pedir_escolaridade():
+    curso = Curso()
+    assert curso.get_nome_escolaridade_coordenador() == "Curso sem coordenador"
+
+def test_deve_retornar_pessoa_sem_escolaridade_coordenador_curso():
+    coordenador = Professor()
+    curso = Curso()
+    curso.set_coordenador(coordenador)
+    assert curso.get_nome_escolaridade_coordenador() == "Pessoa sem escolaridade"
