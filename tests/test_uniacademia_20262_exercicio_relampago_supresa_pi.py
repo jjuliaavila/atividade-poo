@@ -96,3 +96,14 @@ def test_deve_retornar_pessoa_sem_escolaridade_diretor_escola():
     escola = Escola()
     escola.set_diretor(diretor)
     assert escola.get_nome_escolaridade_diretor() == "Pessoa sem escolaridade"
+
+def test_deve_retornar_nome_cidade_naturalidade_professor():
+    cidade = Cidade()
+    cidade.set_nome("Leopoldina")
+    professor = Professor()
+    professor.set_naturalidade(cidade)
+    assert professor.get_nome_cidade_naturalidade() == "Leopoldina"
+
+def test_deve_retornar_professor_sem_naturalidade():
+    professor = Professor()
+    assert professor.get_nome_cidade_naturalidade() == "Pessoa sem naturalidade"

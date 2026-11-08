@@ -8,7 +8,12 @@ class Estado:
 
 class Cidade:
     def __init__(self):
+        self.__nome = ""
         self.__estado = None
+    def set_nome(self, nome):
+        self.__nome = nome
+    def get_nome(self):
+        return self.__nome
     def set_estado(self, estado):
         self.__estado = estado
     def get_estado(self):
@@ -54,6 +59,11 @@ class Pessoa:
             return "Pessoa sem estado naturalidade"
         else:
             return self.__naturalidade.get_nome_estado()
+    def get_nome_cidade_naturalidade(self):
+        if self.__naturalidade is None:
+            return "Pessoa sem naturalidade"
+        else:
+            return self.__naturalidade.get_nome()
 
 class Professor(Pessoa):
     def __init__(self):
