@@ -82,6 +82,16 @@ class Professor(Pessoa):
 class Aluno(Pessoa):
     def __init__(self):
         Pessoa.__init__(self)
+        self.__curso = None  # começa sem curso (relaçao opcional)
+    def set_curso(self, curso):
+        self.__curso = curso
+    def get_curso(self):
+        return self.__curso
+    def get_nome_coordenador(self):
+        if self.__curso is None:
+            return "Aluno sem curso"
+        else:
+            return self.__curso.get_nome_coordenador()
 
 class Curso:
     def __init__(self):

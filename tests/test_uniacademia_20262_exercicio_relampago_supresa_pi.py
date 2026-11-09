@@ -107,3 +107,22 @@ def test_deve_retornar_nome_cidade_naturalidade_professor():
 def test_deve_retornar_professor_sem_naturalidade():
     professor = Professor()
     assert professor.get_nome_cidade_naturalidade() == "Pessoa sem naturalidade"
+
+def test_deve_retornar_nome_coordenador_aluno():
+    coordenador = Professor()
+    coordenador.set_nome("Marco")
+    curso = Curso()
+    curso.set_coordenador(coordenador)
+    aluno = Aluno()
+    aluno.set_curso(curso)
+    assert aluno.get_nome_coordenador() == "Marco"
+
+def test_deve_retornar_aluno_sem_curso():
+    aluno = Aluno()
+    assert aluno.get_nome_coordenador() == "Aluno sem curso"
+
+def test_deve_retornar_curso_sem_coordenador_do_aluno():
+    curso = Curso()
+    aluno = Aluno()
+    aluno.set_curso(curso)
+    assert aluno.get_nome_coordenador() == "Curso sem coordenador"
