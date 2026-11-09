@@ -176,3 +176,32 @@ def test_deve_retornar_escola_sem_cidade():
     aluno = Aluno()
     aluno.set_curso(curso)
     assert aluno.get_nome_estado_escola() == "Escola sem cidade"
+
+def test_deve_retornar_nome_diretor_professor():
+    diretor = Professor()
+    diretor.set_nome("Ana")
+    escola = Escola()
+    escola.set_diretor(diretor)
+    curso = Curso()
+    curso.set_escola(escola)
+    professor = Professor()
+    professor.set_curso(curso)
+    assert professor.get_nome_diretor() == "Ana"
+
+def test_deve_retornar_professor_sem_curso_ao_pedir_diretor():
+    professor = Professor()
+    assert professor.get_nome_diretor() == "Professor sem curso"
+
+def test_deve_retornar_curso_sem_escola_ao_pedir_diretor():
+    curso = Curso()  # curso sem escola
+    professor = Professor()
+    professor.set_curso(curso)
+    assert professor.get_nome_diretor() == "Curso sem escola"
+
+def test_deve_retornar_escola_sem_diretor_ao_pedir_diretor_professor():
+    escola = Escola()
+    curso = Curso()
+    curso.set_escola(escola)
+    professor = Professor()
+    professor.set_curso(curso)
+    assert professor.get_nome_diretor() == "Escola sem diretor"

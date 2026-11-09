@@ -83,6 +83,12 @@ class Professor(Pessoa):
             return "Professor sem curso"
         else:
             return self.__curso.get_nome_tipo_ensino()
+    def get_nome_diretor(self):
+        if self.__curso is None:
+            return "Professor sem curso"
+        else:
+            # pergunta pro curso quem é o diretor da escola
+            return self.__curso.get_nome_diretor_escola()
 
 class Aluno(Pessoa):
     def __init__(self):
@@ -140,6 +146,12 @@ class Curso:
             return "Curso sem escola"
         else:
             return self.__escola.get_nome_estado()
+    def get_nome_diretor_escola(self):
+        if self.__escola is None:
+            return "Curso sem escola"
+        else:
+            # pergunta pra escola quem é o diretor
+            return self.__escola.get_nome_diretor()
 
 class Escola:
     def __init__(self):
@@ -163,6 +175,11 @@ class Escola:
             return "Escola sem cidade"
         else:
             return self.__cidade.get_nome_estado()
+    def get_nome_diretor(self):
+        if self.__diretor is None:
+            return "Escola sem diretor"
+        else:
+            return self.__diretor.get_nome()
 
 class TipoEnsino:
     def __init__(self):
