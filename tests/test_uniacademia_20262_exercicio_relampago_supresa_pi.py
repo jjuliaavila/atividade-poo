@@ -145,3 +145,34 @@ def test_deve_retornar_curso_sem_tipo_ensino():
     professor = Professor()
     professor.set_curso(curso)
     assert professor.get_nome_tipo_ensino() == "Curso sem tipo de ensino"
+
+def test_deve_retornar_nome_estado_escola_aluno():
+    estado = Estado()
+    estado.set_nome("MG")
+    cidade = Cidade()
+    cidade.set_estado(estado)
+    escola = Escola()
+    escola.set_cidade(cidade)
+    curso = Curso()
+    curso.set_escola(escola)
+    aluno = Aluno()
+    aluno.set_curso(curso)
+    assert aluno.get_nome_estado_escola() == "MG"
+
+def test_deve_retornar_aluno_sem_curso_ao_pedir_estado_escola():
+    aluno = Aluno()
+    assert aluno.get_nome_estado_escola() == "Aluno sem curso"
+
+def test_deve_retornar_curso_sem_escola():
+    curso = Curso()
+    aluno = Aluno()
+    aluno.set_curso(curso)  # o aluno tem curso mas o curso nao tem escola
+    assert aluno.get_nome_estado_escola() == "Curso sem escola"
+
+def test_deve_retornar_escola_sem_cidade():
+    escola = Escola()
+    curso = Curso()
+    curso.set_escola(escola)
+    aluno = Aluno()
+    aluno.set_curso(curso)
+    assert aluno.get_nome_estado_escola() == "Escola sem cidade"

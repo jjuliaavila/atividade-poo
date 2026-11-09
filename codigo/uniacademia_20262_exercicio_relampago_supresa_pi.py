@@ -97,11 +97,17 @@ class Aluno(Pessoa):
             return "Aluno sem curso"
         else:
             return self.__curso.get_nome_coordenador()
+    def get_nome_estado_escola(self):
+        if self.__curso is None:
+            return "Aluno sem curso"
+        else:
+            return self.__curso.get_nome_estado_escola()
 
 class Curso:
     def __init__(self):
         self.__coordenador = None
         self.__tipo_ensino = None
+        self.__escola = None
     def set_coordenador(self, coordenador):
         self.__coordenador = coordenador
     def get_coordenador(self):
@@ -125,10 +131,20 @@ class Curso:
             return "Curso sem tipo de ensino"
         else:
             return self.__tipo_ensino.get_nome()
+    def set_escola(self, escola):
+        self.__escola = escola
+    def get_escola(self):
+        return self.__escola
+    def get_nome_estado_escola(self):
+        if self.__escola is None:
+            return "Curso sem escola"
+        else:
+            return self.__escola.get_nome_estado()
 
 class Escola:
     def __init__(self):
         self.__diretor = None  # comeca sem diretor (relacao opcional)
+        self.__cidade = None
     def set_diretor(self, diretor):
         self.__diretor = diretor
     def get_diretor(self):
@@ -138,6 +154,15 @@ class Escola:
             return "Escola sem diretor"  # se nao tem diretor avisa sem vez de dar erro
         else:
             return self.__diretor.get_nome_escolaridade()
+    def set_cidade(self, cidade):
+        self.__cidade = cidade
+    def get_cidade(self):
+        return self.__cidade
+    def get_nome_estado(self):
+        if self.__cidade is None:
+            return "Escola sem cidade"
+        else:
+            return self.__cidade.get_nome_estado()
 
 class TipoEnsino:
     def __init__(self):
