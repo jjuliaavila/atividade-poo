@@ -126,3 +126,22 @@ def test_deve_retornar_curso_sem_coordenador_do_aluno():
     aluno = Aluno()
     aluno.set_curso(curso)
     assert aluno.get_nome_coordenador() == "Curso sem coordenador"
+
+def test_deve_retornar_nome_tipo_ensino_professor():
+    tipo_ensino = TipoEnsino()
+    tipo_ensino.set_nome("Superior")
+    curso = Curso()
+    curso.set_tipo_ensino(tipo_ensino)
+    professor = Professor()
+    professor.set_curso(curso)
+    assert professor.get_nome_tipo_ensino() == "Superior"
+
+def test_deve_retornar_professor_sem_curso_ao_pedir_tipo_ensino():
+    professor = Professor()
+    assert professor.get_nome_tipo_ensino() == "Professor sem curso"
+
+def test_deve_retornar_curso_sem_tipo_ensino():
+    curso = Curso()
+    professor = Professor()
+    professor.set_curso(curso)
+    assert professor.get_nome_tipo_ensino() == "Curso sem tipo de ensino"
